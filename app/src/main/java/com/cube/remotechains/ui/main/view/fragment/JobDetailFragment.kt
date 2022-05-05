@@ -8,6 +8,7 @@ import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.cube.remotechains.R
 import com.cube.remotechains.data.model.JobToSave
 import com.cube.remotechains.databinding.FragmentJobDetailBinding
 import com.cube.remotechains.ui.main.view.MainActivity
@@ -15,13 +16,14 @@ import com.cube.remotechains.ui.main.viewmodel.RemoteJobViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Job
 
-class JobDetailFragment : Fragment() {
+class JobDetailFragment : Fragment(R.layout.fragment_job_detail) {
 
     private var _binding: FragmentJobDetailBinding? = null
     private val binding get() = _binding!!
     private val args: JobDetailFragmentArgs by navArgs()
     private lateinit var currentJob: Job
     private lateinit var viewModel: RemoteJobViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

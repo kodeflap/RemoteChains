@@ -8,19 +8,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.cube.remotechains.ui.main.view.fragment.MainFragmentDirections
-import com.cube.remotechains.databinding.JobLayoutAdapterBinding
 import com.cube.remotechains.data.model.Job
+import com.cube.remotechains.databinding.JobLayoutAdapterBinding
 
 
-class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHolder>(){
-
+class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHolder>() {
     private var binding: JobLayoutAdapterBinding? = null
 
-    inner class RemoteJobViewHolder(itemBinding: JobLayoutAdapterBinding) : RecyclerView.ViewHolder(itemBinding.root)
+    class RemoteJobViewHolder(itemBinding: JobLayoutAdapterBinding) :
+        RecyclerView.ViewHolder(itemBinding.root)
 
-    private val differCallBack = object :
-    DiffUtil.ItemCallback<Job>() {
+    private val differCallback = object :
+        DiffUtil.ItemCallback<Job>() {
         override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
             return oldItem.id == newItem.id
         }
@@ -29,16 +28,18 @@ class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHold
             return oldItem == newItem
         }
     }
+    val differ = AsyncListDiffer(this, differCallback)
 
-    val differ = AsyncListDiffer(this,differCallBack)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RemoteJobViewHolder {
-        binding = JobLayoutAdapterBinding.inflate(LayoutInflater.from(parent.context),parent,false
-        )
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RemoteJobViewHolder {
+        binding =
+            JobLayoutAdapterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RemoteJobViewHolder(binding!!)
     }
 
-    override fun onBindViewHolder(holder: RemoteJobViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RemoteJobAdapter.RemoteJobViewHolder, position: Int) {
         val currentJob = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this)
@@ -51,14 +52,17 @@ class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHold
             binding?.tvJobTitle?.text = currentJob.title
             binding?.tvJobType?.text = currentJob.jobType
 
-            val dateJob = currentJob.publicationDate?.split("T")
-            binding?.tvDate?.text = dateJob?.get(0)
-        }.setOnClickListener { views -> val direction = MainFragmentDirections
-            .actionMainFragmentToJobDetail(currentJob)
-        views.findNavController().navigate(direction)}
+            val date = currentJob.publicationDate?.split("T")
+            binding?.tvDate?.text = date.get(0)
+        }.setOnClickListener { mView ->
+            val direction = MainFragmentDirection
+                .actionMainFragmentToJobDetailView
+            mView.findNavController().navigate(direction)
+        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
 }

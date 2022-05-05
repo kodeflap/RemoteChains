@@ -37,8 +37,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 .create()
         )
 
-//        binding.viewPager.adapter = adapter
-//        binding.viewPagerTab.setViewPager(binding.viewPager)
+        binding.viewPager.adapter = adapter
+        binding.viewPagerTab.setViewPager(binding.viewPager)
     }
 
     override fun onDestroy() {
