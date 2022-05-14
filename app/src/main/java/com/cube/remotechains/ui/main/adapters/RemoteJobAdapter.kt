@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.cube.remotechains.data.model.Job
 import com.cube.remotechains.databinding.JobLayoutAdapterBinding
+import com.cube.remotechains.ui.main.view.fragment.MainFragmentDirections
 
 
 class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHolder>() {
@@ -52,11 +53,11 @@ class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHold
             binding?.tvJobTitle?.text = currentJob.title
             binding?.tvJobType?.text = currentJob.jobType
 
-            val date = currentJob.publicationDate?.split("T")
-            binding?.tvDate?.text = date.get(0)
+            val jobDate = currentJob.publicationDate?.split("T")
+            binding?.tvDate?.text = jobDate?.get(0)
         }.setOnClickListener { mView ->
-            val direction = MainFragmentDirection
-                .actionMainFragmentToJobDetailView
+            val direction = MainFragmentDirections
+                .actionMainFragmentToJobDetailView(currentJob)
             mView.findNavController().navigate(direction)
         }
     }
@@ -66,3 +67,5 @@ class RemoteJobAdapter : RecyclerView.Adapter<RemoteJobAdapter.RemoteJobViewHold
     }
 
 }
+
+

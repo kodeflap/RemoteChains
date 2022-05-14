@@ -1,11 +1,13 @@
 package com.cube.remotechains.ui.main.view.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cube.remotechains.R
@@ -25,7 +27,7 @@ class SavedJobFragment : Fragment(R.layout.fragment_saved_job),RemoteJobSavedAda
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSavedJobBinding.inflate(
             inflater,container,false
         )
@@ -55,7 +57,7 @@ class SavedJobFragment : Fragment(R.layout.fragment_saved_job),RemoteJobSavedAda
     }
 
     private fun updateUI(list: List<JobToSave>?) {
-        if(list.isNotEmpty()){
+        if(list!!.isNotEmpty()){
             binding.rvJobsSaved.visibility = View.GONE
             binding.cardAvail.visibility = View.VISIBLE
         }
@@ -74,7 +76,7 @@ class SavedJobFragment : Fragment(R.layout.fragment_saved_job),RemoteJobSavedAda
                 _,_ -> savedViewModel.deleteJob(job)
                 Toast.makeText(activity,"Job Deleted",Toast.LENGTH_LONG).show()
             }
-            setNegativeButton("Cancel"null)
+            setNegativeButton("Cancel",null)
         }.create().show()
     }
 

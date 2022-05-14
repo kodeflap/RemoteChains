@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -36,7 +37,6 @@ class RemoteJobFragment : Fragment(R.layout.fragment_remote_job),
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentRemoteJobBinding.inflate(inflater, container, false)
         swipeRefreshLayout = binding.container
         swipeRefreshLayout.setOnRefreshListener(this)
@@ -57,7 +57,7 @@ class RemoteJobFragment : Fragment(R.layout.fragment_remote_job),
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
             addItemDecoration(object :
-                DividerItemDecoration(activity, LinearLayoutManager.VERTICAL) {})
+                DividerItemDecoration(activity, LinearLayout.VERTICAL) {})
                 adapter = remoteJobAdapter
         }
         fetchData()

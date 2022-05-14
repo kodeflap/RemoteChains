@@ -1,20 +1,22 @@
 package com.cube.remotechains.ui.main.view.fragment
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cube.remotechains.R
-import com.cube.remotechains.data.model.Job
 import com.cube.remotechains.databinding.FragmentSearchJobBinding
 import com.cube.remotechains.ui.main.adapters.RemoteJobAdapter
 import com.cube.remotechains.ui.main.view.MainActivity
 import com.cube.remotechains.ui.main.viewmodel.RemoteJobViewModel
 import com.cube.remotechains.utils.Constants
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
 class SearchJobFragment : Fragment(R.layout.fragment_search_job) {
 
     private var _binding : FragmentSearchJobBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private lateinit var searchViewModel: RemoteJobViewModel
     private lateinit var searchJobAdapter: RemoteJobAdapter
 
@@ -34,6 +36,7 @@ class SearchJobFragment : Fragment(R.layout.fragment_search_job) {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchViewModel = (activity as MainActivity).viewModel
@@ -64,9 +67,9 @@ class SearchJobFragment : Fragment(R.layout.fragment_search_job) {
     private fun setRecyclerView() {
         searchJobAdapter = RemoteJobAdapter()
         binding.search.apply {
-            layoutManager = LinearLayoutManager(activity)
-            setHasFixedSize(true)
-            adapter = searchJobAdapter
+//            layoutManager = LinearLayoutManager(activity)
+//            setHasFixedSize(true)
+//            adapter = searchJobAdapter
         }
         searchViewModel.searchResult().observe(viewLifecycleOwner,{ remoteJob ->
             searchJobAdapter.differ.submitList(remoteJob.jobs)

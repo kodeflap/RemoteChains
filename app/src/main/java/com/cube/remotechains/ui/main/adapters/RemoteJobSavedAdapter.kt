@@ -3,7 +3,6 @@ package com.cube.remotechains.ui.main.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -12,11 +11,11 @@ import com.bumptech.glide.Glide
 import com.cube.remotechains.data.model.Job
 import com.cube.remotechains.data.model.JobToSave
 import com.cube.remotechains.databinding.JobLayoutAdapterBinding
+import com.cube.remotechains.ui.main.view.fragment.MainFragmentDirections
 
 
 class RemoteJobSavedAdapter constructor(
-    private val itemClickListener: AdapterView.OnItemClickListener
-) : RecyclerView.Adapter<RemoteJobSavedAdapter.RemoteJobViewHolder>() {
+    private val itemClickListener: OnItemClickListener) : RecyclerView.Adapter<RemoteJobSavedAdapter.RemoteJobViewHolder>() {
 
     private var binding: JobLayoutAdapterBinding? = null
 
@@ -56,22 +55,20 @@ class RemoteJobSavedAdapter constructor(
             binding?.tvJobType?.text = currentJob.jobType
             binding?.ibDelete?.visibility = View.VISIBLE
 
-            val date = currentJob.publicationDate?.split("T")
-            binding?.tvDate?.text = date?.get(0)
-        }.setOnClickListener { mview ->
+            val jobDate = currentJob.publicationDate?.split("T")
+            binding?.tvDate?.text = jobDate?.get(0)
+        }.setOnClickListener { mView ->
             val tags = arrayListOf<String>()
-            val job = Job(
-                currentJob.candidateRequiredLocation,currentJob.category,
-                currentJob.companyLogoUrl,currentJob.companyName,
-                currentJob.description,currentJob.id,currentJob.jobType,
-                currentJob.publicationDate,currentJob.salary, tags, currentJob.title,currentJob.url
-            )
+            val job = Job(currentJob.candidateRequiredLocation,currentJob.category,
+            currentJob.companyLogoUrl,currentJob.companyName,currentJob.description,
+            currentJob.id,currentJob.jobType,currentJob.publicationDate,currentJob.salary,
+            tags,currentJob.title,currentJob.url)
             val direction = MainFragmentDirections.actionMainFragmentToJobDetailView(job)
-            mview.findNavController().navigate(direction)
+            mView.findNavController().navigate(direction)
         }
         holder.itemView.apply {
             binding?.ibDelete?.setOnClickListener {
-                itemclick.onItemClick(
+                itemClickListener.onItemClick(
                     currentJob,binding?.ibDelete!!,position
                 )
             }

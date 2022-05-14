@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cube.remotechains.data.model.JobToSave
 
+
 @Database(entities = [JobToSave::class], version = 2)
 abstract class RemoteJobDatabase : RoomDatabase() {
 
@@ -22,7 +23,7 @@ abstract class RemoteJobDatabase : RoomDatabase() {
 
         private fun createDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,RemoteJobDatabase::class.java,
-            "remoteJob_db2"
+            "remoteJob_db"
         ).build()
     }
 }

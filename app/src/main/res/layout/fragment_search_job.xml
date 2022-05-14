@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:hint="Search Here"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

@@ -9,12 +9,12 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.cube.remotechains.R
+import com.cube.remotechains.data.model.Job
 import com.cube.remotechains.data.model.JobToSave
 import com.cube.remotechains.databinding.FragmentJobDetailBinding
 import com.cube.remotechains.ui.main.view.MainActivity
 import com.cube.remotechains.ui.main.viewmodel.RemoteJobViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Job
 
 class JobDetailFragment : Fragment(R.layout.fragment_job_detail) {
 
@@ -27,7 +27,7 @@ class JobDetailFragment : Fragment(R.layout.fragment_job_detail) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentJobDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -46,11 +46,11 @@ class JobDetailFragment : Fragment(R.layout.fragment_job_detail) {
     private fun JobtoFavourite(view: View) {
         val job = JobToSave(
             0,
-            currentJob.location, currentJob.category,
-            currentJob.logo, currentJob.companyName,
+            currentJob.candidateRequiredLocation, currentJob.category,
+            currentJob.companyLogoUrl, currentJob.companyName,
             currentJob.description, currentJob.id, currentJob.jobType,
-            currentJob.publication, currentJob.salary,
-            currentJob.title, currentJob.currentJob.url
+            currentJob.publicationDate, currentJob.salary,
+            currentJob.title, currentJob.url
         )
         viewModel.insert(job)
         Snackbar.make(view,"Job saved",Snackbar.LENGTH_SHORT).show()
@@ -73,9 +73,9 @@ class JobDetailFragment : Fragment(R.layout.fragment_job_detail) {
             blockNetworkImage = false
             loadsImagesAutomatically = true
         }
+    }
         override fun onDestroy() {
             super.onDestroy()
             _binding = null
         }
-    }
 }
