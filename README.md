@@ -34,7 +34,7 @@ Remote Chain is an android app that helps users to find remote jobs.  The app al
 
 <table>
   <tr>
-    <td valign="top"><img src="https://static.wixstatic.com/media/518b8e_6acf28bbf46e45b39d7a779028b012f9~mv2.png/v1/fill/w_317,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/cache5e88e947-5bbf-4fbd-ace1-60604bd00570.png"></td>
+    <td valign="top"><img src="https://static.wixstatic.com/media/518b8e_6acf28bbf46e45b39d7a779028b012f9~mv2.png/v1/fill/w_238,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/cache5e88e947-5bbf-4fbd-ace1-60604bd00570.png"></td>
     <td valign="top"><img src="https://static.wixstatic.com/media/518b8e_3bace784ead84d2bad026b6c4cf2a5b8~mv2.png/v1/fill/w_238,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/cache0edf15d3-6742-45fe-b9bf-6bfb12c20ed8.png"></td>
     <td valign="top"><img src="https://static.wixstatic.com/media/518b8e_ed249e98ad054080b665a0c4c7fdbcbd~mv2.png/v1/fill/w_238,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/cachea120d22d-2b82-49f5-ac71-86e48271d481.png"></td>
   </tr>
