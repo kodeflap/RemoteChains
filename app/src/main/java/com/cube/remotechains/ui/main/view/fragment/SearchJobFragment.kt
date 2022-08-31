@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cube.remotechains.R
 import com.cube.remotechains.databinding.FragmentSearchJobBinding
@@ -55,7 +57,7 @@ class SearchJobFragment : Fragment(R.layout.fragment_search_job) {
             job = MainScope().launch {
                 delay(500L)
                 editable?.let {
-                    if(editable.toString().isNotBlank()) {
+                    if(editable.toString().isNotEmpty()) {
                         searchViewModel.searchJob(editable.toString())
                     }
                 }
@@ -67,17 +69,17 @@ class SearchJobFragment : Fragment(R.layout.fragment_search_job) {
     private fun setRecyclerView() {
         searchJobAdapter = RemoteJobAdapter()
         binding.search.apply {
-//            layoutManager = LinearLayoutManager(activity)
+//            layoutMan = LinearLayoutManager(activity)
 //            setHasFixedSize(true)
-//            adapter = searchJobAdapter
+ //             adapter = searchJobAdapter
         }
         searchViewModel.searchResult().observe(viewLifecycleOwner,{ remoteJob ->
             searchJobAdapter.differ.submitList(remoteJob.jobs)
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

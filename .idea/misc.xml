@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/RemoteChains/app/src/main/res/drawable/card_bg.xml" value="0.1" />
         <entry key="..\:/RemoteChains/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/RemoteChains/app/src/main/res/layout/fragment_job_detail.xml" value="0.1" />
         <entry key="..\:/RemoteChains/app/src/main/res/layout/fragment_main.xml" value="0.1" />

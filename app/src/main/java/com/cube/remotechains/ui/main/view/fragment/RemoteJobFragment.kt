@@ -12,7 +12,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cube.remotechains.R
 import com.cube.remotechains.databinding.FragmentRemoteJobBinding
@@ -20,6 +19,7 @@ import com.cube.remotechains.ui.main.adapters.RemoteJobAdapter
 import com.cube.remotechains.ui.main.view.MainActivity
 import com.cube.remotechains.ui.main.viewmodel.RemoteJobViewModel
 import com.cube.remotechains.utils.Constants
+
 
 class RemoteJobFragment : Fragment(R.layout.fragment_remote_job),
     SwipeRefreshLayout.OnRefreshListener {

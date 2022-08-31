@@ -33,7 +33,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             FragmentPagerItems.with(activity)
                 .add("Jobs",RemoteJobFragment::class.java)
                 .add("Search", SearchJobFragment::class.java)
-                .add("Jobs",SavedJobFragment::class.java)
+                .add("Saved",SavedJobFragment::class.java)
                 .create()
         )
 
