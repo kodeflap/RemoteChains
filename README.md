@@ -1,4 +1,3 @@
-
 # About Remote Chains
 
 Remote Chain is an android app that helps users to find remote jobs.  The app allows you to search for any remote job in all fields anywhere. The remote jobs are given as a list scroll to it and with just a click you are given a description of the job if it is apt for you just tap the apply button. Then fill the required fields needed for the job. The user can save the job to save it for later if the job is no longer needed you can remove it. There is also a search option that will give the search result according to the search position you have given in the search bar.
@@ -20,15 +19,15 @@ Remote Chain is an android app that helps users to find remote jobs.  The app al
 
 ###  Libraries
 
--Room
--Retrofit2
--Glide
--Navigation Components
--Smart Tab
--Coroutine
--Swipe to refresh 
--Architectural components
--Paging
+- Room
+- Retrofit2
+- Glide
+- Navigation Components
+- Smart Tab
+- Coroutine
+- Swipe to refresh 
+- Architectural components
+- Paging
 
 ## APP ScreenShot
 
